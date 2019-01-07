@@ -1,18 +1,34 @@
-# vue-event
+# vue-globa-event
 
 > vue全局事件
-
+    
 ## Build Setup
 
 ``` bash
-# install dependencies
-npm install
+#安装
+npm install vue-globa-event -S
 
-# serve with hot reload at localhost:8080
-npm run dev
+#引用
+在main.js中引用并加载
 
-# build for production with minification
-npm run build
+import vueGlobaEvent from "vue-globa-event";
+Vue.use(vueGlobaEvent);
+
+
+#使用方法
+在A页面中发布消息
+this.$Event.emit('login_success',{a:'111',b:'222',c:3333});
+
+在B页面或C,D,E,F.... 中监听事件
+
+this.$Event.on('login_success', function (rs) {
+    console.log(rs);
+});
+
+每个路由中的页面都会独立收到消息,互不干扰
+
+
+
+
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).

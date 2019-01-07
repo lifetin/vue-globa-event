@@ -1,16 +1,20 @@
 var path = require('path')
 var webpack = require('webpack')
+var entry = './src/main.js';
+var filename = 'build.js';
+if (process.env.NODE_ENV === 'production') {
+  entry = './src/index.js';
+  filename = 'vue-event.js';
+}
 
 module.exports = {
-  //entry: './src/main.js',
-  entry: './src/index.js',
+  entry: entry,
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    //filename: 'build.js'
+    filename: filename,
 
-
-     filename: 'vue-event.js',  //打包生成文件的名字
+   //  filename: 'vue-event.js',  //打包生成文件的名字
      library:'vue-event',   //reqire引入的名字
      libraryTarget:'umd',
      umdNamedDefine:true
